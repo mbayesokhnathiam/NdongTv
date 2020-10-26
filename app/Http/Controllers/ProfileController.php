@@ -28,7 +28,7 @@ class ProfileController extends Controller
     {
         auth()->user()->update($request->all());
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        return back()->withStatus(__('Profil mis à jour avec succès.'));
     }
 
     /**
@@ -41,6 +41,6 @@ class ProfileController extends Controller
     {
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withStatusPassword(__('Password successfully updated.'));
+        return back()->withStatusPassword(__('Mot de passe mis à jour avec succès.'));
     }
 }
