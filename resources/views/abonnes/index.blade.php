@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'zone-management', 'titlePage' => __('Gestion des secteurs')])
+@extends('layouts.app', ['activePage' => 'abonnes-management', 'titlePage' => __('Gestion des abonnés')])
 
 @section('content')
 <div class="content">
@@ -7,13 +7,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">Secteur</h4>
-                        <p class="card-category"> Ici vous pouvez gérer les secteurs</p>
+                        <h4 class="card-title ">Abonnés</h4>
+                        <p class="card-category"> Ici vous pouvez gérer les abonnés</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 text-right">
-                                <a href="#" class="btn btn-sm btn-primary">Nouveau</a>
+                                <a href="{{ route('abonnes.create') }}" class="btn btn-sm btn-primary">Nouveau</a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -21,13 +21,28 @@
                                 <thead class=" text-primary">
                                     <tr>
                                         <th>
-                                            Nom zone
+                                            #
                                         </th>
                                         <th>
-                                            Adresse
+                                            Prénom
                                         </th>
                                         <th>
-                                            Responsable
+                                            Nom
+                                        </th>
+                                        <th>
+                                            Téléphone
+                                        </th>
+                                        <th>
+                                            Nb TV
+                                        </th>
+                                        <th>
+                                            Amplie
+                                        </th>
+                                        <th>
+                                            Secteur
+                                        </th>
+                                        <th>
+                                            Montant
                                         </th>
                                         <th class="text-right">
                                             Actions
@@ -36,22 +51,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            Admin Admin
-                                        </td>
-                                        <td>
-                                            admin@material.com
-                                        </td>
-                                        <td>
-                                            2020-02-24
-                                        </td>
-                                        <td class="td-actions text-right">
-                                            <a rel="tooltip" class="btn btn-success btn-link" href="#"
-                                                data-original-title="" title="">
-                                                <i class="material-icons">edit</i>
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>

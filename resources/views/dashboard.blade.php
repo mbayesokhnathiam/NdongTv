@@ -80,16 +80,16 @@
         <div class="col-lg-6 col-md-12">
             <div class="card">
                 <div class="card-header card-header-warning">
-                  <h4 class="card-title">Employees Stats</h4>
-                  <p class="card-category">New employees on 15th September, 2016</p>
+                  <h4 class="card-title">Secteurs</h4>
+                  <p class="card-category">Liste des secteurs et le nombre d'abonnés par secteur</p>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-warning">
                       <th>ID</th>
-                      <th>Name</th>
-                      <th>Salary</th>
-                      <th>Country</th>
+                      <th>Nom</th>
+                      <th>Responsable</th>
+                      <th>NB Abonnés</th>
                     </thead>
                     <tbody>
                       <tr>
@@ -124,16 +124,16 @@
         <div class="col-lg-6 col-md-12">
           <div class="card">
             <div class="card-header card-header-warning">
-              <h4 class="card-title">Employees Stats</h4>
-              <p class="card-category">New employees on 15th September, 2016</p>
+              <h4 class="card-title">Amplies</h4>
+              <p class="card-category">Affiche les amplies et le nombre d'abonnés par amplie</p>
             </div>
             <div class="card-body table-responsive">
               <table class="table table-hover">
                 <thead class="text-warning">
                   <th>ID</th>
-                  <th>Name</th>
-                  <th>Salary</th>
-                  <th>Country</th>
+                  <th>Amplie</th>
+                  <th>Secteur</th>
+                  <th>NB Abonnés</th>
                 </thead>
                 <tbody>
                   <tr>

@@ -18,8 +18,8 @@
         </a>
       </li>
 
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('table') }}">
+      <li class="nav-item{{ $activePage == 'abonnes-management' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('abonnes.index') }}">
           <i class="material-icons">people</i>
             <p>{{ __('Abonnés') }}</p>
         </a>
@@ -53,14 +53,14 @@
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'zone-management' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('zones.index') }}">
                   <span class="sidebar-mini"> GZ </span>
                   <span class="sidebar-normal"> {{ __('Gestion Zones') }} </span>
                 </a>
               </li>
 
               <li class="nav-item{{ $activePage == 'amplie-management' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('amplies.index') }}">
                   <span class="sidebar-mini"> AM </span>
                   <span class="sidebar-normal"> {{ __('Gestion Amplies') }} </span>
                 </a>
