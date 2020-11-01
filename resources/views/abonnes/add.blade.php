@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form method="post" action="3" autocomplete="off" class="form-horizontal">
+                <form method="post" action="{{ route('abonnes.store') }}" autocomplete="off" id="add-abonne-form" class="form-horizontal">
                     @csrf
                     @method('post')
 
@@ -47,7 +47,7 @@
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('prenom') ? ' has-danger' : '' }}">
                                         <input class="form-control{{ $errors->has('prenom') ? ' is-invalid' : '' }}"
-                                            name="prenom" id="input-prenom" type="email"
+                                            name="prenom" id="input-prenom" type="text"
                                             placeholder="{{ __('Prénom ex: Lamine') }}" required />
                                         @if ($errors->has('prenom'))
                                         <span id="prenom-error" class="error text-danger"
@@ -62,7 +62,7 @@
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('telephone') ? ' has-danger' : '' }}">
                                         <input class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}"
-                                            name="prenom" id="input-telephone" type="tel"
+                                            name="telephone" id="input-telephone" type="tel"
                                             placeholder="{{ __('Téléphone ex: 77 000 00 00') }}" required />
                                         @if ($errors->has('telephone'))
                                         <span id="telephone-error" class="error text-danger"
@@ -76,7 +76,7 @@
                                 <label class="col-sm-2 col-form-label">{{ __('NB TV') }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('nb_tv') ? ' has-danger' : '' }}">
-                                        <input class="form-control{{ $errors->has('nb_tv') ? ' is-invalid' : '' }}"
+                                        <input class="form-control {{ $errors->has('nb_tv') ? ' is-invalid' : '' }}"
                                             name="nb_tv" id="input-nb-tv" type="number"
                                             placeholder="{{ __('NB TV ex: 10') }}" required />
                                         @if ($errors->has('nb_tv'))
@@ -91,9 +91,11 @@
                                 <label class="col-sm-2 col-form-label">{{ __('Secteur') }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('secteur') ? ' has-danger' : '' }}">
-                                        <select id="input-secteur" class="form-control">
+                                        <select id="input-secteur" class="form-control" required>
                                             <option selected value="">Choisir secteur</option>
-                                            <option value="">...</option>
+                                            @foreach ($secteurs as $secteur)
+                                            <option value="{{ $secteur->id }}">{{ $secteur->nom_secteur }}</option>
+                                            @endforeach
                                         </select>
                                         @if ($errors->has('secteur'))
                                         <span id="secteur-errorn" class="error text-danger"
@@ -107,9 +109,8 @@
                                 <label class="col-sm-2 col-form-label">{{ __('Amplies') }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('amplie_id') ? ' has-danger' : '' }}">
-                                        <select name="amplie_id" id="input-amplie" class="form-control">
-                                            <option selected value="">Choisir l'amplie</option>
-                                            <option value="">...</option>
+                                        <select name="amplie_id" id="input-amplie" class="form-control" disabled="true" required>
+
                                         </select>
                                         @if ($errors->has('amplie_id'))
                                         <span id="amplie-errorn" class="error text-danger"
@@ -138,9 +139,9 @@
                                 <label class="col-sm-2 col-form-label">{{ __('Montant') }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('montant') ? ' has-danger' : '' }}">
-                                        <input class="form-control{{ $errors->has('nb_tv') ? ' is-invalid' : '' }}"
+                                        <input class="form-control{{ $errors->has('montant') ? ' is-invalid' : '' }}"
                                             name="montant" id="input-montant" type="number"
-                                            placeholder="{{ __('0') }}" disabled />
+                                            placeholder="{{ __('0') }}" readonly="true"/>
                                         @if ($errors->has('montant'))
                                         <span id="montant-error" class="error text-danger"
                                             for="input-montant">{{ $errors->first('montant') }}</span>
@@ -155,7 +156,7 @@
                                     <div class="form-group{{ $errors->has('reduction') ? ' has-danger' : '' }}">
                                         <input class="form-control{{ $errors->has('reduction') ? ' is-invalid' : '' }}"
                                             name="reduction" id="input-reduction" type="number"
-                                            placeholder="{{ __('Réduction ex: 1000') }}" required />
+                                            placeholder="{{ __('Réduction ex: 1000') }}"/>
                                         @if ($errors->has('nb_tv'))
                                         <span id="reduction-error" class="error text-danger"
                                             for="input-reduction">{{ $errors->first('reduction') }}</span>
@@ -166,7 +167,7 @@
                         </div>
 
                         <div class="card-footer ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary">{{ __('Enregistrer') }}</button>
+                            <button type="submit" id="save-abonne" class="btn btn-primary">{{ __('Enregistrer') }}</button>
                         </div>
                     </div>
                 </form>

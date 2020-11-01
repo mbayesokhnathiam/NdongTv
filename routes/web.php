@@ -64,4 +64,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('zones', 'App\Http\Controllers\ZoneController');
     Route::resource('amplies', 'App\Http\Controllers\AmpliesController');
     Route::resource('abonnes', 'App\Http\Controllers\AbonnesController');
+    Route::get('abonnes/amplies/{id}', 'App\Http\Controllers\AbonnesController@getAmpliesBySecteur');
 });
