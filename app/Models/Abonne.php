@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Abonne
- * 
+ *
  * @property int $id
  * @property string $prenom
  * @property string $nom
@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property Collection|Abonnement[] $abonnements
  *
  * @package App\Models
@@ -29,7 +29,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Abonne extends Model
 {
 	use SoftDeletes;
-	protected $table = 'abonnes';
+    protected $table = 'abonnes';
+    public $timestamps = true;
 
 	protected $fillable = [
 		'prenom',

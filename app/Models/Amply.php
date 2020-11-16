@@ -29,7 +29,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Amply extends Model
 {
 	use SoftDeletes;
-	protected $table = 'amplies';
+    protected $table = 'amplies';
+    public $timestamps = true;
 
 	protected $casts = [
 		'secteur_id' => 'int'

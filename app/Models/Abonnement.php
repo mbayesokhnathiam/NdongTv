@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Abonnement
- * 
+ *
  * @property int $id
  * @property string $numero
  * @property int $nb_tv
@@ -21,12 +21,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $reduction
  * @property int $prix_tv
  * @property int $amplie_id
+ * @property int $secteur_id
  * @property bool $status
  * @property int $abonnes_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property Abonne $abonne
  * @property Amply $amply
  * @property Collection|LignePaiement[] $ligne_paiements
@@ -36,14 +37,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Abonnement extends Model
 {
 	use SoftDeletes;
-	protected $table = 'abonnements';
+    protected $table = 'abonnements';
+    public $timestamps = true;
 
 	protected $casts = [
 		'nb_tv' => 'int',
 		'montant' => 'int',
 		'reduction' => 'int',
 		'prix_tv' => 'int',
-		'amplie_id' => 'int',
+        'amplie_id' => 'int',
+        'secteur_id' => 'int',
 		'status' => 'bool',
 		'abonnes_id' => 'int'
 	];
@@ -54,7 +57,8 @@ class Abonnement extends Model
 		'montant',
 		'reduction',
 		'prix_tv',
-		'amplie_id',
+        'amplie_id',
+        'secteur_id',
 		'status',
 		'abonnes_id'
 	];

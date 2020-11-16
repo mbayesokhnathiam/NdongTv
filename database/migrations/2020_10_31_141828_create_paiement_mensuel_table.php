@@ -18,7 +18,7 @@ class CreatePaiementMensuelTable extends Migration {
 			$table->increments('id');
 			$table->string('numero', 10);
 			$table->string('mois', 20);
-			$table->string('Annee', 4);
+			$table->string('annee', 4);
 			$table->timestamps();
 			$table->softDeletes();
 		});

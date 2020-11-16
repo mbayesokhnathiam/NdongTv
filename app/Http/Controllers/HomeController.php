@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Secteur;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $secteurs = Secteur::with('amplies')->get();
+        return view('dashboard',['secteurs' => $secteurs]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Secteur;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class ZoneController extends Controller
 {
@@ -12,9 +13,10 @@ class ZoneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('zones.index');
+        $secteurs = Secteur::with('amplies')->get();
+        return view('zones.index',['secteurs' => $secteurs]);
     }
 
     /**

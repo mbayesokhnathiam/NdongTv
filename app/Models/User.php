@@ -33,7 +33,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 	use SoftDeletes;
-	protected $table = 'users';
+    protected $table = 'users';
+    public $timestamps = true;
 
 	protected $dates = [
 		'email_verified_at'

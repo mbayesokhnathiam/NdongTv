@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ZoneController;
+use App\Http\Controllers\PaiementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,4 +66,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('amplies', 'App\Http\Controllers\AmpliesController');
     Route::resource('abonnes', 'App\Http\Controllers\AbonnesController');
     Route::get('abonnes/amplies/{id}', 'App\Http\Controllers\AbonnesController@getAmpliesBySecteur');
+    Route::get('paiement', 'App\Http\Controllers\PaiementController@getListPaiementMensuel');
+    Route::post('paiements/mens/id', 'App\Http\Controllers\PaiementController@getIDPaiement');
+    Route::get('paiements/{id}', 'App\Http\Controllers\PaiementController@getListPaiementAbonnes');
+    Route::get('paiements/data/{id}', 'App\Http\Controllers\PaiementController@getLinePaiement');
+
 });

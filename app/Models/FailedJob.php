@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class FailedJob
- * 
+ *
  * @property int $id
  * @property string $uuid
  * @property string $connection
@@ -28,7 +28,7 @@ class FailedJob extends Model
 {
 	use SoftDeletes;
 	protected $table = 'failed_jobs';
-	public $timestamps = false;
+	public $timestamps = true;
 
 	protected $dates = [
 		'failed_at'

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Amply;
 use Illuminate\Http\Request;
 
 class AmpliesController extends Controller
@@ -13,7 +14,9 @@ class AmpliesController extends Controller
      */
     public function index()
     {
-        return view('amplies.index');
+        $amplies = Amply::with('secteur','abonnements')->get();
+
+        return view('amplies.index',['amplies' => $amplies]);
     }
 
     /**

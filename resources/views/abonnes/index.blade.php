@@ -16,9 +16,9 @@
                                 <a href="{{ route('abonnes.create') }}" class="btn btn-sm btn-primary">Nouveau</a>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
+                        <div class="table-responsive" style="overflow: initial">
+                            <table class="table" id="abonne-datatable">
+                                <thead>
                                     <tr>
                                         <th>
                                             #
@@ -44,16 +44,45 @@
                                         <th>
                                             Montant
                                         </th>
-                                        <th class="text-right">
+                                        <th style="width: 25%">
                                             Actions
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
 
-                                    </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            Prénom
+                                        </th>
+                                        <th>
+                                            Nom
+                                        </th>
+                                        <th>
+                                            Téléphone
+                                        </th>
+                                        <th>
+                                            Nb TV
+                                        </th>
+                                        <th>
+                                            Amplie
+                                        </th>
+                                        <th>
+                                            Secteur
+                                        </th>
+                                        <th>
+                                            Montant
+                                        </th>
+                                        <th style="width: 25%">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

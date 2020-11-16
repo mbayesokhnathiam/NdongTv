@@ -86,36 +86,18 @@
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-warning">
-                      <th>ID</th>
                       <th>Nom</th>
                       <th>Responsable</th>
-                      <th>NB Abonnés</th>
+                      <th>NB Amplies</th>
                     </thead>
                     <tbody>
+                      @foreach ($secteurs as $secteur)
                       <tr>
-                        <td>1</td>
-                        <td>Dakota Rice</td>
-                        <td>$36,738</td>
-                        <td>Niger</td>
+                        <td>{{ $secteur->numero }}</td>
+                        <td>{{ $secteur->responsable }}</td>
+                        <td>{{ count($secteur['amplies']) }}</td>
                       </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Minerva Hooper</td>
-                        <td>$23,789</td>
-                        <td>Curaçao</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Sage Rodriguez</td>
-                        <td>$56,142</td>
-                        <td>Netherlands</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Philip Chaney</td>
-                        <td>$38,735</td>
-                        <td>Korea, South</td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

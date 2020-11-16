@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Secteur
- * 
+ *
  * @property int $id
  * @property string $numero
  * @property string $nom_secteur
@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property Collection|Amply[] $amplies
  *
  * @package App\Models
@@ -30,7 +30,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Secteur extends Model
 {
 	use SoftDeletes;
-	protected $table = 'secteur';
+    protected $table = 'secteur';
+    public $timestamps = true;
 
 	protected $fillable = [
 		'numero',

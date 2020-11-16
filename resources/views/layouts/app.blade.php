@@ -148,6 +148,8 @@
         <script src="{{ asset('material') }}/demo/demo.js"></script>
         <script src="{{ asset('material') }}/js/settings.js"></script>
         <script src="{{ asset('js') }}/ajax/abonnes.js"></script>
+        <script src="{{ asset('js') }}/ajax/paiement.js"></script>
+        <script src="{{ asset('js') }}/ajax/paiement-mens.js"></script>
         @stack('js')
     </body>
 </html>

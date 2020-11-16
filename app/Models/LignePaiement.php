@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class LignePaiement
- * 
+ *
  * @property int $id
  * @property int $abonnement_id
  * @property int $paiement_mensuel_id
@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property Abonnement $abonnement
  * @property PaiementMensuel $paiement_mensuel
  *
@@ -31,7 +31,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class LignePaiement extends Model
 {
 	use SoftDeletes;
-	protected $table = 'ligne_paiement';
+    protected $table = 'ligne_paiement';
+    public $timestamps = true;
 
 	protected $casts = [
 		'abonnement_id' => 'int',

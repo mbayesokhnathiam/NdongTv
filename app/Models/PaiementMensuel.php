@@ -13,15 +13,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class PaiementMensuel
- * 
+ *
  * @property int $id
  * @property string $numero
  * @property string $mois
- * @property string $Annee
+ * @property string $annee
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property Collection|LignePaiement[] $ligne_paiements
  *
  * @package App\Models
@@ -29,12 +29,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PaiementMensuel extends Model
 {
 	use SoftDeletes;
-	protected $table = 'paiement_mensuel';
+    protected $table = 'paiement_mensuel';
+    public $timestamps = true;
 
 	protected $fillable = [
 		'numero',
 		'mois',
-		'Annee'
+		'annee'
 	];
 
 	public function ligne_paiements()

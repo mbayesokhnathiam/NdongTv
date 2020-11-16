@@ -13,46 +13,32 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 text-right">
-                                <a href="#" class="btn btn-sm btn-primary">Nouveau</a>
+                                {{-- <a href="#" class="btn btn-sm btn-primary">Nouveau</a> --}}
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="table-secteurs">
                                 <thead class=" text-primary">
                                     <tr>
                                         <th>
-                                            Nom zone
-                                        </th>
-                                        <th>
-                                            Adresse
+                                            Identidiant secteur
                                         </th>
                                         <th>
                                             Responsable
                                         </th>
-                                        <th class="text-right">
-                                            Actions
+                                        <th>
+                                            NB amplies
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($secteurs as $secteur)
                                     <tr>
-                                        <td>
-                                            Admin Admin
-                                        </td>
-                                        <td>
-                                            admin@material.com
-                                        </td>
-                                        <td>
-                                            2020-02-24
-                                        </td>
-                                        <td class="td-actions text-right">
-                                            <a rel="tooltip" class="btn btn-success btn-link" href="#"
-                                                data-original-title="" title="">
-                                                <i class="material-icons">edit</i>
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                        </td>
+                                        <td>{{ $secteur->numero }}</td>
+                                        <td>{{ $secteur->responsable }}</td>
+                                        <td>{{ count($secteur['amplies']) }}</td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

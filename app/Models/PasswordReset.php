@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class PasswordReset
- * 
+ *
  * @property string $email
  * @property string $token
  * @property Carbon|null $created_at
@@ -25,7 +25,7 @@ class PasswordReset extends Model
 {
 	use SoftDeletes;
 	protected $table = 'password_resets';
-	public $incrementing = false;
+	public $incrementing = true;
 
 	protected $hidden = [
 		'token'

@@ -19,8 +19,9 @@ class CreateAbonnementsTable extends Migration {
 			$table->string('numero', 20);
 			$table->integer('nb_tv');
 			$table->integer('montant');
-			$table->integer('reduction')->default(0);
-			$table->integer('prix_tv');
+			$table->integer('reduction')->default(0)->nullable();
+            $table->integer('prix_tv');
+            $table->integer('secteur_id');
 			$table->integer('amplie_id')->unsigned()->index('amplie_id');
 			$table->boolean('status')->default(1);
 			$table->integer('abonnes_id')->unsigned()->index('abonnes_id');
