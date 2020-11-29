@@ -120,27 +120,15 @@
                 <tbody>
                   <tr>
                     <td>1</td>
-                    <td>Dakota Rice</td>
-                    <td>$36,738</td>
-                    <td>Niger</td>
+                    <td>Yeumbeul nord chez Fatou DIA</td>
+                    <td>L</td>
+                    <td>230</td>
                   </tr>
                   <tr>
                     <td>2</td>
-                    <td>Minerva Hooper</td>
-                    <td>$23,789</td>
-                    <td>Curaçao</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Sage Rodriguez</td>
-                    <td>$56,142</td>
-                    <td>Netherlands</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Philip Chaney</td>
-                    <td>$38,735</td>
-                    <td>Korea, South</td>
+                    <td>Yeumbeul sur chez Mme FALL</td>
+                    <td>Z</td>
+                    <td>30</td>
                   </tr>
                 </tbody>
               </table>

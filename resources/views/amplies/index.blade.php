@@ -29,30 +29,27 @@
                                         <th>
                                             Secteur
                                         </th>
+                                        <th>
+                                            Nb Clients
+                                        </th>
                                         <th class="text-right">
                                             Actions
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            Admin Admin
-                                        </td>
-                                        <td>
-                                            admin@material.com
-                                        </td>
-                                        <td>
-                                            2020-02-24
-                                        </td>
-                                        <td class="td-actions text-right">
-                                            <a rel="tooltip" class="btn btn-success btn-link" href="#"
-                                                data-original-title="" title="">
-                                                <i class="material-icons">edit</i>
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                    <td>1</td>
+                    <td>Yeumbeul nord chez Fatou DIA</td>
+                    <td>L</td>
+                    <td>230</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Yeumbeul sur chez Mme FALL</td>
+                    <td>Z</td>
+                    <td>30</td>
+                  </tr>
                                 </tbody>
                             </table>
                         </div>
