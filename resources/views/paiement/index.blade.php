@@ -1,3 +1,4 @@
+@inject('paycontroller', 'App\Http\Controllers\PaiementController')
 @extends('layouts.app', ['activePage' => 'pay-management', 'titlePage' => __('Gestion des paiements')])
 
 @section('content')
@@ -13,7 +14,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 text-right">
-                                <a href="#" class="btn btn-sm btn-primary">Nouveau</a>
+                            @if($paycontroller->getVerifMonthPay() != 1)
+                                <a href="{{ route('add-paiement') }}"  class="btn btn-sm">Nouveau</a>
+                            @endif
                             </div>
                         </div>
                         <div class="table-responsive">

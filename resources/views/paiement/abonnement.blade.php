@@ -69,7 +69,7 @@
 
 {{-- popup --}}
 <div class="modal fade bd-example-modal-sm" id="payModal"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="card card-signup card-plain">
 
@@ -80,8 +80,8 @@
 
                         <div class="form-group bmd-form-group">
                             <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">face</i>
+                                <span class="input-group-addon" style="margin-right:10px">
+                                Montant à payer
                                 </span>
                                 <input type="text" name="montant" class="form-control" readonly="true">
                             </div>
@@ -89,8 +89,8 @@
 
                         <div class="form-group bmd-form-group">
                             <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">email</i>
+                                <span class="input-group-addon" style="margin-right:10px">
+                                Montant versé
                                 </span>
                                 <input type="text" name="montant_verse" class="form-control" placeholder="">
                             </div>
@@ -98,8 +98,8 @@
 
                         <div class="form-group bmd-form-group">
                             <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">lock_outline</i>
+                                <span class="input-group-addon" style="margin-right:10px">
+                                Montant restant
                                 </span>
                                 <input type="text" placeholder="0" class="form-control" name="montant_restant">
                             </div>
@@ -108,7 +108,7 @@
                 </form>
             </div>
             <div class="modal-footer justify-content-center">
-                <a href="#pablo" class="btn btn-primary btn-link btn-wd btn-lg">Valider</a>
+                <a href="#pablo" class="btn btn-primary btn-link btn-wd btn-lg">Enregistrer</a>
             </div>
         </div>
       </div>

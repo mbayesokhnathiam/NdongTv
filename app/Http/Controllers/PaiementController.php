@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use Carbon\Carbon;
+use App\Models\Abonnement;
+use Illuminate\Http\Request;
 use App\Models\LignePaiement;
 use App\Models\PaiementMensuel;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class PaiementController extends Controller
@@ -71,4 +75,51 @@ class PaiementController extends Controller
        $data =  LignePaiement::query()->with('abonnement')->where('id',$id)->first();
         return response()->json($data);
     }
+
+    public function testDate(){
+        setlocale(LC_TIME, 'fr_FR');
+        $month_name = date('F', mktime(0, 0, 0, 11));
+
+        return $month_name;
+    }
+
+
+    public function getVerifMonthPay(){
+        $now = Carbon::now(); 
+        $currentpay = $now->year.$now->month;
+        return PaiementMensuel::query()->where('numero',$currentpay)->first() != null ?  true : false;
+    }
+
+    public function savePayMens(Request $request){
+        try{
+            $now = Carbon::now(); 
+            $currentpay = $now->year.$now->month;
+            DB::beginTransaction();
+            $paiement = PaiementMensuel::create([
+                'numero' => $currentpay,
+                'mois' => request('mois'),
+                'annee' => request('annee')
+            ]);
+
+            if($paiement){
+                $abonnements = Abonnement::query()->where('status',true)->get();
+
+                foreach ($abonnements as $abonnement) {
+                    LignePaiement::create([
+                        'abonnement_id' => $abonnement->id,
+		                'paiement_mensuel_id' => $paiement->id,
+                    ]);
+                }
+            }
+            DB::commit();
+            return back()->withStatus(__('Paiement crée avec succès.'));
+
+        }catch(Exception $e){
+            DB::rollBack();
+            return $e->getMessage();
+        }
+
+    }
+
+    
 }

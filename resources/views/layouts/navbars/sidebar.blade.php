@@ -5,7 +5,7 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="#" class="simple-text logo-normal">
+    <a href="/add" class="simple-text logo-normal">
       {{ __('Banlieu cable NDONG TV') }}
     </a>
   </div>

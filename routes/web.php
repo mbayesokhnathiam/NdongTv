@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ZoneController;
@@ -21,6 +22,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('test', 'App\Http\Controllers\PaiementController@testDate');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
@@ -55,6 +58,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('upgrade', function () {
 		return view('pages.upgrade');
 	})->name('upgrade');
+
+	Route::get('paiements/add', function () {
+		$now = Carbon::now(); 
+		setlocale(LC_TIME, 'fr_FR');
+        $month_name = date('F', mktime(0, 0, 0, $now->month));
+
+		return view('paiement.add',['year'=>$now->year,'month'=>$month_name]);
+	})->name('add-paiement');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -69,6 +81,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('paiement', 'App\Http\Controllers\PaiementController@getListPaiementMensuel');
     Route::post('paiements/mens/id', 'App\Http\Controllers\PaiementController@getIDPaiement');
     Route::get('paiements/{id}', 'App\Http\Controllers\PaiementController@getListPaiementAbonnes');
-    Route::get('paiements/data/{id}', 'App\Http\Controllers\PaiementController@getLinePaiement');
-
+	Route::get('paiements/data/{id}', 'App\Http\Controllers\PaiementController@getLinePaiement');
+	Route::post('save-paiement', 'App\Http\Controllers\PaiementController@savePayMens')->name('save-paiement');
 });
