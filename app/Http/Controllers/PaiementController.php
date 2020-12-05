@@ -16,7 +16,7 @@ class PaiementController extends Controller
     public function getListPaiementMensuel(Request $request)
     {
         $data = PaiementMensuel::all();
-
+        
         if ($request->ajax()) {
 
             return DataTables::of($data)
@@ -52,7 +52,7 @@ class PaiementController extends Controller
     public function getListPaiementAbonnes(Request $request,$id){
 
          $data = LignePaiement::query()->with('abonnement.abonne','abonnement.amply.secteur')->where('paiement_mensuel_id',$id)->get();
-
+     
         if ($request->ajax()) {
 
             return DataTables::of($data)
@@ -62,7 +62,7 @@ class PaiementController extends Controller
                         credit_card
                         </span></a>';
 
-                    return $btn;
+                        return $btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -107,12 +107,13 @@ class PaiementController extends Controller
                 foreach ($abonnements as $abonnement) {
                     LignePaiement::create([
                         'abonnement_id' => $abonnement->id,
-		                'paiement_mensuel_id' => $paiement->id,
+                        'paiement_mensuel_id' => $paiement->id,
+                        'montant_restant' => $abonnement->montant,
                     ]);
                 }
             }
             DB::commit();
-            return back()->withStatus(__('Paiement crée avec succès.'));
+            return redirect()->route('paiements')->withStatus(__('Paiement crée avec succès.'));
 
         }catch(Exception $e){
             DB::rollBack();
@@ -121,5 +122,15 @@ class PaiementController extends Controller
 
     }
 
+
+    public function savePayUser(Request $request){
+        $ligne = LignePaiement::find($request->id);
+        $ligne->montant_verse += $request->montant_verse;
+        $ligne->montant_restant -= $request->montant_verse;
+        $ligne->save();
+        if($ligne){
+            return  back()->withStatus(__('Paiement crée avec succès.'));
+        }
+    }
     
 }

@@ -17,7 +17,7 @@
                             </div> --}}
                         </div>
                         <div class="table-responsive">
-                            <table class="table abonnement-pay">
+                            <table class="table abonnement-pay" style="width:100%">
                                 <thead class=" text-primary">
                                     <tr>
                                         <th>
@@ -74,12 +74,14 @@
         <div class="card card-signup card-plain">
 
             <div class="modal-body">
-                <form class="form" method="" action="">
+                <form class="form" method="post" action="{{ route('save-paiement-user') }}">
                     <p class="description text-center">Paiement du mois</p>
                     <div class="card-body">
-
+                    @csrf
+                    @method('post')
                         <div class="form-group bmd-form-group">
                             <div class="input-group">
+                                <input type="hidden" name="id" value="">
                                 <span class="input-group-addon" style="margin-right:10px">
                                 Montant à payer
                                 </span>
@@ -92,7 +94,7 @@
                                 <span class="input-group-addon" style="margin-right:10px">
                                 Montant versé
                                 </span>
-                                <input type="text" name="montant_verse" class="form-control" placeholder="">
+                                <input type="number" name="montant_verse" class="form-control" placeholder="">
                             </div>
                         </div>
 
@@ -105,11 +107,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="modal-footer justify-content-center">
+                <button type="submit"  class="btn btn-primary btn-link btn-wd btn-lg" id="save-pay-user">Enregistrer</button>
+            </div>
                 </form>
             </div>
-            <div class="modal-footer justify-content-center">
-                <a href="#pablo" class="btn btn-primary btn-link btn-wd btn-lg">Enregistrer</a>
-            </div>
+            
+            <span id="error-message" style="text-align:center;color: #FF0000;">
+                
+            </span>
         </div>
       </div>
     </div>
