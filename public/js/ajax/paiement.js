@@ -77,24 +77,54 @@ $(function() {
             });
 
 
-            $('body').on('click', '.show-list-abon', function () {
+            // $('body').on('click', '.show-pay-modal', function () {
+            //     let pay_id = $(this).data('id');
+            //     var montant = 0;
+            //     $.get('/paiements/data/'+pay_id,function(data){
+            //         montant += data.abonnement.montant;
+            //         $('input[name="montant"]').val(data.montant_restant);
+            //         $('#payModal').modal('show');
+
+            //         //change event
+
+            //         $('input[name="montant_verse"]').on('keyup',function(){
+            //             if(){
+            //                 console.log('yoreloma lii');
+            //             }else{
+            //             $('input[name="montant_restant"]').val(data.montant_restant - parseInt($('input[name="montant_verse"]').val()));
+            //             }
+            //         });
+            //     });
+
+            // });
+
+            $('body').on('click', '.show-pay-modal', function () {
                 let pay_id = $(this).data('id');
                 var montant = 0;
                 $.get('/paiements/data/'+pay_id,function(data){
                     montant += data.abonnement.montant;
-                    $('input[name="montant"]').val(data.abonnement.montant);
+                    $('input[name="montant"]').val(data.montant_restant);
+                    $('input[name="id"]').val(data.abonnement.id);
                     $('#payModal').modal('show');
-
+    
                     //change event
-
+    
                     $('input[name="montant_verse"]').on('keyup',function(){
-                        if(parseInt($('input[name="montant"]').val()) - parseInt($('input[name="montant_verse"]').val()) < 0){
-                            console.log('yoreloma lii');
+                        if(parseInt($('input[name="montant"]').val()) - parseInt($('input[name="montant_verse"]').val()) < 0 || isNaN(parseInt($('input[name="montant"]').val()) - parseInt($('input[name="montant_verse"]').val()))){
+                            $('#error-message').text('Le montant versé ne peut pas être supérieur au montant total à payer');
+                            $('#error-message').show();
+                            $('#save-pay-user').hide();
                         }else{
-                        $('input[name="montant_restant"]').val(data.abonnement.montant - parseInt($('input[name="montant_verse"]').val()));
+                            $('#error-message').hide();
+                            $('#save-pay-user').show();
+                            data.montant_restant - parseInt($('input[name="montant_verse"]').val()) >= 0 ? $('input[name="montant_restant"]').val(data.montant_restant - parseInt($('input[name="montant_verse"]').val())) : $('input[name="montant_restant"]').val('0');
                         }
+    
+    
+                        
                     });
                 });
-
+    
             });
+            $('#save-pay-user').hide();
 });

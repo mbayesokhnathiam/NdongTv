@@ -58,7 +58,7 @@ class PaiementController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = '<a href="javascript:void(0)"  data-id="' . $row->id . '"  data-original-title="status-abonnement"  class="info btn btn-primary btn-sm show-list-abon"><span class="material-icons">
+                    $btn = '<a href="javascript:void(0)"  data-id="' . $row->id . '"  data-original-title="status-abonnement"  class="info btn btn-primary btn-sm show-pay-modal"><span class="material-icons">
                         credit_card
                         </span></a>';
 

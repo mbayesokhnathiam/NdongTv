@@ -56,36 +56,7 @@ $(function() {
         });
 
 
-        $('body').on('click', '.show-list-abon', function () {
-            let pay_id = $(this).data('id');
-            var montant = 0;
-            $.get('/paiements/data/'+pay_id,function(data){
-                montant += data.abonnement.montant;
-                $('input[name="montant"]').val(data.abonnement.montant);
-                $('input[name="id"]').val(data.abonnement.id);
-                $('#payModal').modal('show');
-
-                //change event
-
-                $('input[name="montant_verse"]').on('keyup',function(){
-                    if(parseInt($('input[name="montant"]').val()) - parseInt($('input[name="montant_verse"]').val()) < 0 || 
-                    isNaN(parseInt($('input[name="montant"]').val()) - parseInt($('input[name="montant_verse"]').val()))){
-                        $('#error-message').text('Le montant versé ne peut pas être supérieur au montant total à payer');
-                        $('#error-message').show();
-                        $('#save-pay-user').hide();
-                    }else{
-                        $('#error-message').hide();
-                        $('#save-pay-user').show();
-                    $('input[name="montant_restant"]').val(data.abonnement.montant - parseInt($('input[name="montant_verse"]').val()));
-                    }
-
-
-                    
-                });
-            });
-
-        });
-        $('#save-pay-user').hide();
+        
         
 
 
