@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 text-right">
-                                <a href="#" class="btn btn-sm btn-primary">Nouveau</a>
+                                <!-- <a href="#" class="btn btn-sm btn-primary">Nouveau</a> -->
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -29,30 +29,24 @@
                                         <th>
                                             Date de création
                                         </th>
-                                        <th class="text-right">
-                                            Actions
-                                        </th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                   @foreach($users as $user)
+                                   <tr>
                                         <td>
-                                            Admin Admin
-                                        </td>
-                                        <td>
-                                            admin@material.com
+                                            {{$user->name}}
                                         </td>
                                         <td>
-                                            2020-02-24
+                                            {{$user->email}}
                                         </td>
-                                        <td class="td-actions text-right">
-                                            <a rel="tooltip" class="btn btn-success btn-link" href="#"
-                                                data-original-title="" title="">
-                                                <i class="material-icons">edit</i>
-                                                <div class="ripple-container"></div>
-                                            </a>
+                                        <td>
+                                            {{$user->created_at}}
                                         </td>
+                                        
                                     </tr>
+                                   @endforeach
                                 </tbody>
                             </table>
                         </div>

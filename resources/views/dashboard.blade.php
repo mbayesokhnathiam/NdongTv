@@ -52,7 +52,7 @@
             <div class="card-footer">
                 <div class="stats">
                     <i class="material-icons text-success">dvr</i>
-                    <a href="#pablo">Afficher liste amplies</a>
+                    <a href="{{ route('amplies.index') }}">Afficher liste amplies</a>
                   </div>
             </div>
           </div>
