@@ -11,14 +11,14 @@
                 <i class="material-icons">people_outline</i>
               </div>
               <p class="card-category">Abonnés</p>
-              <h3 class="card-title">180
+              <h3 class="card-title">{{ $nbAbonnes }}
                 {{-- <small>GB</small> --}}
               </h3>
             </div>
             <div class="card-footer">
               <div class="stats">
                 <i class="material-icons text-success">groupe</i>
-                <a href="#pablo">Afficher liste abonnés</a>
+                <a href="{{ route('abonnes.index') }}">Afficher liste abonnés</a>
               </div>
             </div>
           </div>
@@ -30,12 +30,12 @@
                 <i class="material-icons">store</i>
               </div>
               <p class="card-category">Secteurs</p>
-              <h3 class="card-title">4</h3>
+              <h3 class="card-title">{{ count($secteurs) }}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
                     <i class="material-icons text-success">store</i>
-                    <a href="#pablo">Afficher liste secteurs</a>
+                    <a href="{{ route('zones.index') }}">Afficher liste secteurs</a>
                   </div>
             </div>
           </div>
@@ -47,7 +47,7 @@
                 <i class="material-icons">dvr</i>
               </div>
               <p class="card-category">Amplies</p>
-              <h3 class="card-title">75</h3>
+              <h3 class="card-title">{{ $amplies ? count($amplies) : 0 }}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -64,12 +64,12 @@
                 <i class="material-icons">attach_money</i>
               </div>
               <p class="card-category">Crédits</p>
-              <h3 class="card-title">10</h3>
+              <h3 class="card-title">{{ $credits ?? 0 }}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
-                    <i class="material-icons text-success">attach_money</i>
-                    <a href="#pablo">Afficher liste crédits</a>
+                    <!-- <i class="material-icons text-success">attach_money</i> -->
+                    <!-- <a href="#pablo">Afficher liste crédits</a> -->
                 </div>
             </div>
           </div>
@@ -81,7 +81,7 @@
             <div class="card">
                 <div class="card-header card-header-warning">
                   <h4 class="card-title">Secteurs</h4>
-                  <p class="card-category">Liste des secteurs et le nombre d'abonnés par secteur</p>
+                  <p class="card-category">Liste des secteurs et le nombre d'amplies par secteur</p>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
@@ -112,24 +112,18 @@
             <div class="card-body table-responsive">
               <table class="table table-hover">
                 <thead class="text-warning">
-                  <th>ID</th>
                   <th>Amplie</th>
                   <th>Secteur</th>
                   <th>NB Abonnés</th>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Yeumbeul nord chez Fatou DIA</td>
-                    <td>L</td>
-                    <td>230</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Yeumbeul sur chez Mme FALL</td>
-                    <td>Z</td>
-                    <td>30</td>
-                  </tr>
+                @foreach($amplies ?? '' as $amplie)
+                    <tr>
+                        <td>{{ $amplie->adresse }}</td>
+                        <td>{{ $amplie->secteur->nom_secteur }}</td>
+                        <td>{{ count($amplie->abonnements)}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
               </table>
             </div>

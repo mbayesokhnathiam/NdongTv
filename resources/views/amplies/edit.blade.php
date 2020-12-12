@@ -5,13 +5,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form method="post" action="{{ route('amplies.store') }}"  id="add-abonne-form" class="form-horizontal">
+                <form method="post" action="/amplies/{{$selected->id}}"  id="-abonne-form" class="form-horizontal">
                     @csrf
-                    @method('post')
+                    @method('PUT')
 
                     <div class="card ">
                         <div class="card-header card-header-success">
-                            <h4 class="card-title">{{ __('Ajouter nouveau amplie') }}</h4>
+                            <h4 class="card-title">{{ __('Modifier amplie') }}</h4>
                             <p class="card-category">{{ __('informations de l\'amplie') }}</p>
                         </div>
                         <div class="card-body ">
@@ -33,7 +33,7 @@
                                     <div class="form-group{{ $errors->has('nom') ? ' has-danger' : '' }}">
                                         <input class="form-control{{ $errors->has('nom') ? ' is-invalid' : '' }}"
                                             name="adresse" id="input-adresse" type="text"
-                                            placeholder="{{ __('Nom ex: Yeumbeul chez Lamine NDONG') }}" value="{{old('adresse')}}" required="true"
+                                            placeholder="{{ __('Nom ex: Yeumbeul chez Lamine NDONG') }}" value="{{$selected->adresse}}" required="true"
                                             aria-required="true" />
                                         @if ($errors->has('nom'))
                                         <span id="name-error" class="error text-danger"
@@ -51,7 +51,7 @@
                                         <select id="input-secteur" name="secteur_id" class="form-control" value="{{old('secteur_id')}}" required>
                                             <option selected value="">Choisir secteur</option>
                                             @foreach ($secteurs as $secteur)
-                                            <option value="{{ $secteur->id }}" {{ old('secteur_id') == $secteur->id ? "selected" : "" }}>{{ $secteur->nom_secteur }}</option>
+                                            <option value="{{ $secteur->id }}" {{ $selected->id == $secteur->id ? "selected" : "" }}>{{ $secteur->nom_secteur }}</option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('secteur'))
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="card-footer ml-auto mr-auto">
-                            <button type="submit" id="save-amplie" class="btn btn-primary">{{ __('Enregistrer') }}</button>
+                            <button type="submit" id="edit-amplie" class="btn btn-primary">{{ __('Enregistrer') }}</button>
                         </div>
                     </div>
                 </form>

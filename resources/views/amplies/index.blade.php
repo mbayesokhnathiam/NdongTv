@@ -13,16 +13,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 text-right">
-                                <a href="#" class="btn btn-sm btn-primary">Nouveau</a>
+                                <a href="{{ route('amplies.create') }}" class="btn btn-sm btn-primary">Nouveau</a>
                             </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
                                     <tr>
-                                        <th>
-                                            Numero
-                                        </th>
                                         <th>
                                             Adresse
                                         </th>
@@ -38,18 +35,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                    <td>1</td>
-                    <td>Yeumbeul nord chez Fatou DIA</td>
-                    <td>L</td>
-                    <td>230</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Yeumbeul sur chez Mme FALL</td>
-                    <td>Z</td>
-                    <td>30</td>
-                  </tr>
+                                @foreach($amplies as $amplie)
+                                    <tr>
+                                        <td>{{ $amplie->adresse }}</td>
+                                        <td>{{ $amplie->secteur->nom_secteur }}</td>
+                                        <td>{{ count($amplie->abonnements)}}</td>
+                                        <td class="text-right"><a href="/amplies/{{$amplie->id}}/edit" class="btn btn-success"><span class="material-icons">
+                                        create
+                                        </span></a></td>
+                                    </tr>
+                                @endforeach
+
                                 </tbody>
                             </table>
                         </div>

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Amply;
+use App\Models\Abonne;
 use App\Models\Secteur;
+use App\Models\LignePaiement;
 
 class HomeController extends Controller
 {
@@ -24,6 +27,9 @@ class HomeController extends Controller
     public function index()
     {
         $secteurs = Secteur::with('amplies')->get();
-        return view('dashboard',['secteurs' => $secteurs]);
+        $amplies = Amply::with('secteur','abonnements')->get();
+        $nbAbonnes = count(Abonne::all());
+        $credits = LignePaiement::query()->where('status',false)->count();
+        return view('dashboard',['secteurs' => $secteurs,'amplies'=>$amplies,'nbAbonnes'=>$nbAbonnes,'credits' => $credits]);
     }
 }
