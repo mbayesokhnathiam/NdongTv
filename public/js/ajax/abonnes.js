@@ -57,6 +57,21 @@ input_nb_tv.on('keyup',function(){
 
 
 var table = $('#abonne-datatable').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+        {
+            extend: 'excelHtml5',
+            exportOptions: {
+                columns: [1,2,3,4,5,6,7,8]
+            }
+        },
+        {
+            extend: 'pdfHtml5',
+            exportOptions: {
+                columns: [1,2,3,4,5,6,7,8]
+            }
+        }
+    ],
     processing: true,
     serverSide: true,
     ajax: "/abonnes",
@@ -104,7 +119,47 @@ var table = $('#abonne-datatable').DataTable({
             orderable: true,
             searchable: true
         },
-    ]
+    ],
+
+    responsive: {
+        breakpoints: [{
+                name: 'bigdesktop',
+                width: Infinity
+            },
+            {
+                name: 'meddesktop',
+                width: 1480
+            },
+            {
+                name: 'smalldesktop',
+                width: 1280
+            },
+            {
+                name: 'medium',
+                width: 1188
+            },
+            {
+                name: 'tabletl',
+                width: 1024
+            },
+            {
+                name: 'btwtabllandp',
+                width: 848
+            },
+            {
+                name: 'tabletp',
+                width: 768
+            },
+            {
+                name: 'mobilel',
+                width: 480
+            },
+            {
+                name: 'mobilep',
+                width: 320
+            }
+        ]
+    }
     });
 
     $('body').on('click', '.disable-abon', function () {

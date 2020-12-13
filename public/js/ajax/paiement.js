@@ -25,6 +25,21 @@ $(function() {
 
 
         var table = $('.abonnement-pay').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: [1,2,3,4,5,6,7,8]
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: [1,2,3,4,5,6,7,8]
+                    }
+                }
+            ],
             processing: true,
             serverSide: true,
             ajax: document.location.href,
